@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Smart_Cart
 {
-    internal class ProductGenerator
+    public class ProductGenerator
     {
     }
 }

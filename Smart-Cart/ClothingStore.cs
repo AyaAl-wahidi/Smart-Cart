@@ -22,7 +22,7 @@ namespace Smart_Cart
 
         public void DisplayProducts()
         {
-            Console.WriteLine("Products available in the Clothing Store:");
+            Console.WriteLine("Products Available In The Clothing Store:");
             for (int i = 0; i < products.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {products[i]}");
@@ -31,7 +31,7 @@ namespace Smart_Cart
 
         public void addToCart(ShoppingCart cart)
         {
-            Console.WriteLine("Enter the product number to add to the cart:");
+            Console.WriteLine("Enter The Product Number To Add To The Cart:");
             if (int.TryParse(Console.ReadLine(), out int num) && num > 0 && num <= products.Count)
             {
                 cart.AddItem(products[num - 1]);

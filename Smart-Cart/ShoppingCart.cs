@@ -8,34 +8,42 @@ namespace Smart_Cart
 {
     public class ShoppingCart
     {
-        private List<Product> items = new List<Product>();
+        public List<Product> items = new List<Product>();
 
-        public void AddItem(Product product)
+        public bool AddItem(Product product)
         {
+            int count = items.Count;
+            
             items.Add(product);
-            Console.WriteLine($"{product.Name} added to the cart.");
+            Console.WriteLine($"{product.Name} Added To Your Cart.");
+            if (items.Count == count + 1)
+            {
+                return true;
+            }
+            return false;
         }
 
-        public void RemoveItem(Product product)
+        public bool RemoveItem(Product product)
         {
-            if (items.Remove(product))
+            if (items.Remove(product) == true)
             {
-                Console.WriteLine($"{product.Name} removed from the cart.");
+                Console.WriteLine($"{product.Name} Removed From The Cart.");
+                return true;
             }
             else
             {
-                Console.WriteLine($"{product.Name} not found in the cart.");
+                Console.WriteLine($"{product.Name} Not Found In The Cart.");
+                return false;
             }
         }
 
         public void ViewItems()
         {
-            Console.Clear();
             Console.WriteLine("************************* Your Cart *************************");
-            Console.WriteLine("Items in your cart:");
+            Console.WriteLine("Items In Your Cart:");
             if (items.Count == 0)
             {
-                Console.WriteLine("Your cart is empty.");
+                Console.WriteLine("Your Cart Is Empty!");
                 return;
             }
 
@@ -44,7 +52,6 @@ namespace Smart_Cart
                 Console.WriteLine($"{i + 1}. {items[i]}");
             }
             Action();
-            Console.ReadKey();
         }
 
         public int CalculateTotalCost()
@@ -62,7 +69,7 @@ namespace Smart_Cart
             switch (choice)
             {
                 case 1:
-                    Console.WriteLine("\nEnter the item number to remove:");
+                    Console.WriteLine("\nEnter The Item Number To Remove It From Your Card:");
                     if (int.TryParse(Console.ReadLine(), out int num) && num > 0 && num <= items.Count)
                     {
                         RemoveItem(items[num - 1]);

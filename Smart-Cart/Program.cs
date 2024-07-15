@@ -4,9 +4,7 @@
     {
         public static void Main(string[] args)
         {
-
             MainMenu();
-
         }
 
         public static void MainMenu()
@@ -21,8 +19,9 @@
                 Console.WriteLine("\n************************* Where To Go? *************************");
                 Console.WriteLine("1. Grocery Store");
                 Console.WriteLine("2. Clothing Store");
-                Console.WriteLine("3. View Cart");
-                Console.WriteLine("4. Exit");
+                Console.WriteLine("3. Add Random Product");
+                Console.WriteLine("4. View Cart");
+                Console.WriteLine("5. Exit");
 
                 if (int.TryParse(Console.ReadLine(), out int choice))
                 {
@@ -37,9 +36,13 @@
                             clothingStore.addToCart(cart);
                             break;
                         case 3:
-                            cart.ViewItems();
+                            Product randomProduct = ProductGenerator.GenerateProduct();
+                            cart.AddItem(randomProduct);
                             break;
                         case 4:
+                            cart.ViewItems();
+                            break;
+                        case 5:
                             Console.WriteLine("Thank you for shopping with us!");
                             return;
                         default:
